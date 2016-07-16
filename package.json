@@ -1,0 +1,23 @@
+{
+  "name": "serverside",
+  "version": "1.0.0",
+  "description": "Server side implementation of Cheddar",
+  "main": "Cheddar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheddar-lang/serverside.git"
+  },
+  "author": "The-Quill",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cheddar-lang/serverside/issues"
+  },
+  "homepage": "https://github.com/cheddar-lang/serverside#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
