@@ -1,4 +1,4 @@
-require('./Cheddar.js')
+var cheddar = require('cheddar-lang');
 var fs = require("fs");
 var express = require('express');
 var port = 4001;
@@ -11,23 +11,12 @@ var cheddarRoute = function(path, res){
         if (error){
             throw error;
         }
+
         var output = "";
-        var logger = console.log
-        console.log = function(){
-            var args = arguments
-            Object.keys(arguments).forEach(function(key){
-                let argument = args[key];
-                output += argument.toString();
-            });
-        }
-        logger(data.toString())
-        try {
-            Cheddar(data.toString())
-        } catch (error){
-            res.write(error.toString());
-            return res.end()
-        }
-        console.log = logger;
+        cheddar(data.toString(), {
+            PRINT: (data) => output += data.toString()
+        });
+
         res.write(output);
         res.end()
     })
@@ -37,12 +26,12 @@ app.get('/', function(req, res){
     var path = req.path;
     console.log('index: - access attempt at path: ' + path)
     cheddarRoute(
-        'index.chr',
+        'index.cdr',
         res
     )
 })
 
-app.get(/\.chr$/, function(req, res){
+app.get(/\.cdr$/, function(req, res){
     var path = req.path;
     console.log('cheddar: - access attempt at path: ' + path)
     cheddarRoute(

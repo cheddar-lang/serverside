@@ -1,0 +1,7 @@
+print "<!DOCTYPE html>
+<html>
+    <head><title>Cheddar Demo!</title></head>
+    <body>
+    Hello from Cheddar!
+    </body>
+</html>";
